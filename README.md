@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/source/SCOUSE_LOGO.png"  alt="" width = "750" />
+<img src="figures/SCOUSE_LOGO.png"  alt="" width = "750" />
 </p>
 
 About
