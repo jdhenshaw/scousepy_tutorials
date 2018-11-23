@@ -42,7 +42,9 @@ def run_scousepy():
         s.load_stage_1(datadirectory+filename+'/stage_1/s1.scousepy')
         s.load_cube(fitsfile=filename+".fits")
     else:
-        s = scouse.stage_1(filename, datadirectory, wsaa, ppv_vol=ppv_vol, outputdir=outputdir, mask_below=mask, fittype=fittype, verbose = verb, write_moments=True, save_fig=True)
+        s = scouse.stage_1(filename, datadirectory, wsaa, ppv_vol=ppv_vol, \
+        outputdir=outputdir, mask_below=mask, fittype=fittype, verbose = verb, \
+        write_moments=True, save_fig=True)
 
     #==========================================================================#
     # Stage 2 - this is the manual fitting step.

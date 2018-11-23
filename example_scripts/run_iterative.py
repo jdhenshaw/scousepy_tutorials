@@ -16,9 +16,9 @@ datadirectory    =  './'
 # The data cube to be analysed
 filename         =  'n2h+10_37_ds'
 # The range in velocity, x, and y over which to fit
-ppv_vol          =  [32.0,42.0,0.0,0.0,0.0,0.0]
+ppv_vol          =  [32.0,42.0,None,None,None,None]
 # Radius for the spectral averaging areas. Pixel units.
-rsaa             =  [2.0]
+wsaa             =  [2.0]
 # Tolerances for stage_3
 # peak minimum S/N, minimum width in channels, maximum difference from SAA velocity, maximum difference from SAA FWHM, maximum separation in units FWHM
 tol              = [3.0, 1.0, 3.0, 2.0, 0.5]
@@ -45,7 +45,7 @@ if os.path.exists(datadirectory+filename+'/stage_1/s1.scousepy'):
     s.load_stage_1(datadirectory+filename+'/stage_1/s1.scousepy')
     s.load_cube(fitsfile=filename+".fits")
 else:
-    s = scouse.stage_1(filename, datadirectory, ppv_vol, rsaa, mask_below=0.3, fittype=fittype, verbose = verb, refine_grid=RG, nrefine = nRG, write_moments=True, save_fig=True)
+    s = scouse.stage_1(filename, datadirectory, wsaa, ppv_vol=ppv_vol, mask_below=0.3, fittype=fittype, verbose = verb, refine_grid=RG, nrefine = nRG, write_moments=True, save_fig=True)
 
 if os.path.exists(datadirectory+filename+'/stage_2/s2.scousepy'):
     s.load_stage_2(datadirectory+filename+'/stage_2/s2.scousepy')
