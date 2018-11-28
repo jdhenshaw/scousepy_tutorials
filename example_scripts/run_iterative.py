@@ -11,6 +11,11 @@ import pylab as pl
 #pl.ioff()
 pl.ion()
 
+#==============================================================================#
+# NOTE THIS IS NOT QUITE WORKING YET AND HAS NOT BEEN UPDATED - PROBABLY WON'T
+# WORK WITHOUT TWEAKING. 
+#==============================================================================#
+
 # Input values for core SCOUSE stages
 datadirectory    =  './'
 # The data cube to be analysed
