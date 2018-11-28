@@ -12,7 +12,7 @@ def run_scousepy():
     # outputdir.
     datadirectory    =  '../data/'
     # For the tutorials we will set outputdir so things don't get messy
-    outputdir = '../output/simple_example_run/'
+    outputdir = datadirectory#'../output/simple_example_run/'
     # The data cube to be analysed - remove .fits
     filename         =  'n2h+10_37'
     # The range in velocity, x, and y over which to fit. This is an optional
@@ -36,35 +36,37 @@ def run_scousepy():
     # This is stage 1 - a description can be found on the github page - used to
     # define the coverage.
     #==========================================================================#
-    if os.path.exists(datadirectory+filename+'/stage_1/s1.scousepy'):
-        s = scouse(outputdir=datadirectory, filename=filename, fittype=fittype,
+    if os.path.exists(outputdir+filename+'/stage_1/s1.scousepy'):
+        s = scouse(outputdir=outputdir, filename=filename, fittype=fittype,
                    datadirectory=datadirectory)
-        s.load_stage_1(datadirectory+filename+'/stage_1/s1.scousepy')
-        s.load_cube(fitsfile=filename+".fits")
+        s.load_stage_1(outputdir+filename+'/stage_1/s1.scousepy')
+        s.load_cube(fitsfile=datadirectory+filename+".fits")
     else:
-        s = scouse.stage_1(filename, datadirectory, wsaa, ppv_vol=ppv_vol, outputdir=outputdir, mask_below=mask, fittype=fittype, verbose = verb, write_moments=True, save_fig=True)
+        s = scouse.stage_1(filename, datadirectory, wsaa, ppv_vol=ppv_vol, \
+        outputdir=outputdir, mask_below=mask, fittype=fittype, verbose = verb, \
+        write_moments=True, save_fig=True)
 
     #==========================================================================#
     # Stage 2 - this is the manual fitting step.
     #==========================================================================#
-    # if os.path.exists(datadirectory+filename+'/stage_2/s2.scousepy'):
-    #     s.load_stage_2(datadirectory+filename+'/stage_2/s2.scousepy')
+    # if os.path.exists(outputdir+filename+'/stage_2/s2.scousepy'):
+    #     s.load_stage_2(outputdir+filename+'/stage_2/s2.scousepy')
     # else:
     #     s = scouse.stage_2(s, verbose=verb, write_ascii=True)
 
     #==========================================================================#
     #stage 3 - automated fitting
     #==========================================================================#
-    # if os.path.exists(datadirectory+filename+'/stage_3/s3.scousepy'):
-    #     s.load_stage_3(datadirectory+filename+'/stage_3/s3.scousepy')
+    # if os.path.exists(outputdir+filename+'/stage_3/s3.scousepy'):
+    #     s.load_stage_3(outputdir+filename+'/stage_3/s3.scousepy')
     # else:
     #     s = scouse.stage_3(s, tol, njobs=njobs, verbose=verb)
 
     #==========================================================================#
     # Stage 4 - selecting the best fits
     #==========================================================================#
-    # if os.path.exists(datadirectory+filename+'/stage_4/s4.scousepy'):
-    #     s.load_stage_4(datadirectory+filename+'/stage_4/s4.scousepy')
+    # if os.path.exists(outputdir+filename+'/stage_4/s4.scousepy'):
+    #     s.load_stage_4(outputdir+filename+'/stage_4/s4.scousepy')
     # else:
     #     s = scouse.stage_4(s, verbose=verb)
 
@@ -76,16 +78,16 @@ def run_scousepy():
     # will return you to the previous plot. Pressing enter on that plot will end
     # stage 5.
     #==========================================================================#
-    # if os.path.exists(datadirectory+filename+'/stage_5/s5.scousepy'):
-    #     s.load_stage_5(datadirectory+filename+'/stage_5/s5.scousepy')
+    # if os.path.exists(outputdir+filename+'/stage_5/s5.scousepy'):
+    #     s.load_stage_5(outputdir+filename+'/stage_5/s5.scousepy')
     # else:
     #     s = scouse.stage_5(s, blocksize = 6, figsize = [18,10], plot_residuals=True, verbose=verb)
 
     #==========================================================================#
     # Stage 6 - refitting the data you identified in stage 5
     #==========================================================================#
-    # if os.path.exists(datadirectory+filename+'/stage_6/s6.scousepy'):
-    #     s.load_stage_6(datadirectory+filename+'/stage_6/s6.scousepy')
+    # if os.path.exists(outputdir+filename+'/stage_6/s6.scousepy'):
+    #     s.load_stage_6(outputdir+filename+'/stage_6/s6.scousepy')
     # else:
     #     s = scouse.stage_6(s, plot_neighbours=True, radius_pix = 2, figsize = [18,10], plot_residuals=True, write_ascii=True, verbose=verb)
 
